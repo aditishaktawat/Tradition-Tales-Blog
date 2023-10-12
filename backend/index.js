@@ -17,7 +17,7 @@ app.use(cors(
   }
 ));
 
-mongoose.connect('mongodb+srv://aditi:1234ad@merncluster.5km0ode.mongodb.net/test?retryWrites=true&w=majority&appName=AtlasApp');
+
 
 app.use(bodyParser.json({ extended: true}))
 app.use(bodyParser.urlencoded({ extended: true}))
