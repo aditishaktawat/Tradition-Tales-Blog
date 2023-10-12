@@ -36,7 +36,7 @@ const [isAuthenticated, isUserAuthenticated] = useState(false);
         
         <div style={{marginTop: 64}}>
           <Routes>
-      <Route path='/login' element={<Login isUserAuthenticated={isUserAuthenticated}/>} />
+      <Route path='https:://tradition-tales-blog-4.vercel.app/login' element={<Login isUserAuthenticated={isUserAuthenticated}/>} />
 
       <Route path='/' element={<PrivateRoute isAuthenticated={isAuthenticated}/>} >
       <Route path='/' element={<Home />} />
