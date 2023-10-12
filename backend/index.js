@@ -11,7 +11,7 @@ const app = express()
 
 app.use(cors(
   {
-    origin: [""],
+    origin: ["https://tradition-tales-blog-front.vercel.app/login"],
     methods: ["POST" , "GET"],
     credentials: true
   }
