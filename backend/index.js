@@ -17,7 +17,6 @@ app.use(cors(
   }
 ));
 
-mongoose.connect('mongodb+srv://aditi:1234ad@merncluster.5km0ode.mongodb.net/test?retryWrites=true&w=majority&appName=AtlasApp');
 
 app.use(bodyParser.json({ extended: true}))
 app.use(bodyParser.urlencoded({ extended: true}))
@@ -30,4 +29,6 @@ app.listen(PORT, () => console.log(`Server is running successfully on PORT ${POR
 const USERNAME = process.env.DB_USERNAME;
 const PASSWORD = process.env.DB_PASSWORD;
 
-Connection(USERNAME, PASSWORD);
+ const URL = `mongodb+srv://${USERNAME}:${PASSWORD}@merncluster.5km0ode.mongodb.net/?retryWrites=true&w=majority&appName=AtlasApp`;
+
+Connection(URL);
