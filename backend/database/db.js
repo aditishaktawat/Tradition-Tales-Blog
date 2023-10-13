@@ -4,7 +4,7 @@ import mongoose from 'mongoose'
    
     try{
      
-        await mongoose.connect(URL,{useNewUrlParser: true});
+        await mongoose.connect(URL,{useNewUrlParser: false});
         console.log('Database connected successfully');
     } catch (error) {
       console.log('Error while connecting with the database', error);
