@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 
- const Connection = async(username,password) => {
+ const Connection = async(URL) => {
    
     try{
      
