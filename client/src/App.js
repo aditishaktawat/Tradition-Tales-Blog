@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-
+import axios from 'axios';
 
 import DataProvider from './context/DataProvider';
 
@@ -36,7 +36,7 @@ const [isAuthenticated, isUserAuthenticated] = useState(false);
       .get(`${backendUrl}/api/auth/check-auth`, { withCredentials: true })
       .then((response) => {
         if (response.data.isAuthenticated) {
-          setIsAuthenticated(true);
+          isUserAuthenticated(true);
         }
       })
       .catch((error) => {
