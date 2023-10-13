@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 
 import DataProvider from './context/DataProvider';
@@ -30,6 +30,21 @@ function App() {
 
 const [isAuthenticated, isUserAuthenticated] = useState(false);
 
+  const backendUrl = 'https://tradition-tales-backend.vercel.app';
+  useEffect(() => {
+    axios
+      .get(`${backendUrl}/api/auth/check-auth`, { withCredentials: true })
+      .then((response) => {
+        if (response.data.isAuthenticated) {
+          setIsAuthenticated(true);
+        }
+      })
+      .catch((error) => {
+        console.error('Authentication check failed:', error);
+      });
+  }, []);
+
+  
   return (
       <DataProvider>
         <BrowserRouter>
