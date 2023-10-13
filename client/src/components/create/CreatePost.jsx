@@ -76,7 +76,8 @@ useEffect(() => {
 
          // Api call
          const res = await API.uploadFile(data)
-         post.picture = res.data 
+         post.picture = ${https://tradition-tales-backend.vercel.app}/file/${res.data}`; 
+          setImageDataURL(post.picture);
       }
    }
    getImage();
@@ -121,7 +122,7 @@ const savePost = async() => {
             type="file"
             id="fileInput"
             style= {{ display: 'none'}}
-            onChange={(e) => setFile(e.target.files[0])}
+            onChange={(e) => handleFileChange(e)}
            />
 
          <InputTextField placeholder='Title' onChange={(e) => handleChange(e)} name="title"/>
