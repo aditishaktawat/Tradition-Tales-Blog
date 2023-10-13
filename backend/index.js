@@ -29,6 +29,6 @@ app.listen(PORT, () => console.log(`Server is running successfully on PORT ${POR
 const USERNAME = process.env.DB_USERNAME;
 const PASSWORD = process.env.DB_PASSWORD;
 
- const URL = `mongodb+srv://${USERNAME}:${PASSWORD}@merncluster.5km0ode.mongodb.net/?retryWrites=true&w=majority&appName=AtlasApp`;
+ const URL = process.env.MONGODB_URI || `mongodb+srv://${USERNAME}:${PASSWORD}@merncluster.5km0ode.mongodb.net/?retryWrites=true&w=majority&appName=AtlasApp`;
 
 Connection(URL);
