@@ -76,7 +76,8 @@ useEffect(() => {
 
          // Api call
          const res = await API.uploadFile(data)
-         post.picture = ${https://tradition-tales-backend.vercel.app}/file/${res.data}`; 
+         post.picture = `https://tradition-tales-backend.vercel.app/file/${res.data}`;
+
           setImageDataURL(post.picture);
       }
    }
