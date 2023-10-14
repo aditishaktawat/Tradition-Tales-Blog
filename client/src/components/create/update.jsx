@@ -64,6 +64,28 @@ const Update = () => {
     fetchData();
   }, [id]);
 
+useEffect(() => {
+   const getImage = async() => {
+      if (file) {
+         const data = new FormData();
+         data.append("name", file.name)
+         data.append("file", file);
+
+         // Api call
+         const res = await API.uploadFile(data)
+         post.picture = `https://tradition-tales-backend.vercel.app/file/${res.data}`;
+
+          setImageDataURL(post.picture);
+      }
+   }
+   getImage();
+    post.categories = location.search?.split('=')[1] || 'All';
+    post.username = account.username;
+}, [file, account.username, location.search, post]);
+
+
+  
+
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
     if (selectedFile) {
@@ -81,21 +103,12 @@ const Update = () => {
   };
 
   const updateBlogPost = async () => {
-    if (file) {
-      const data = new FormData();
-      data.append('name', file.name);
-      data.append('file', file);
-      const res = await API.uploadFile(data);
-      post.picture = res.data;
-    }
-    post.categories = location.search?.split('=')[1] || 'All';
-    post.username = account.username;
-
-    let res = await API.updatePost(post);
-    if (res.isSuccess) {
-      navigate(`/details/${id}`);
-    }
-  };
+    let res =  await API.updatePost(post);
+  if(res.isSuccess) {
+   navigate(`/details/${id}`);
+  }
+    };
+  
 
   return (
     <Container>
@@ -112,14 +125,8 @@ const Update = () => {
           onChange={(e) => handleFileChange(e)}
         />
 
-        <InputTextField placeholder="Title" value={post.title} onChange={(e) => handleChange(e)} name="title" />
-        <Button
-          variant="contained"
-          onClick={() => updateBlogPost()}
-          disabled={!file} // Disable the button if no file is selected
-        >
-          Update
-        </Button>
+        <InputTextField placeholder='Title' value={post.title} onChange={(e) => handleChange(e)} name="title" />
+         <Button variant="contained" onClick={() => updateBlogPost()}>Update</Button>
       </StyledFormContainer>
 
       <TextArea
