@@ -66,7 +66,7 @@ const {account} = useContext(DataContext);
 const location = useLocation();
 const navigate = useNavigate();
 
-   const url = post.picture ? post.picture : 'https://images.freecreatives.com/wp-content/uploads/2015/05/vintage-photography-backgrounds.jpg';
+  
 
 useEffect(() => {
    const getImage = async() => {
@@ -87,7 +87,17 @@ useEffect(() => {
     post.username = account.username;
 }, [file, account.username, location.search, post]);
 
-
+const handleFileChange = (e) => {
+        const selectedFile = e.target.files[0];
+        if (selectedFile) {
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                setImageDataURL(event.target.result);
+            };
+            reader.readAsDataURL(selectedFile);
+            setFile(selectedFile);
+        }
+    };
 
 
 const handleChange = (e) => {
@@ -103,7 +113,7 @@ const savePost = async() => {
 
     return (
        <Container>
-         <Image src={url} alt="banner" />
+         <Image src={imageDataURL || post.picture || 'https://images.freecreatives.com/wp-content/uploads/2015/05/vintage-photography-backgrounds.jpg'} alt="banner" />
 
         <StyledFormContainer>
            <label htmlFor="fileInput">
@@ -113,7 +123,7 @@ const savePost = async() => {
             type="file"
             id="fileInput"
             style= {{ display: 'none'}}
-            onChange={(e) => setfile(e.target.files[0])}
+            onChange={(e) => handleFileChange(e)}
            />
 
          <InputTextField placeholder='Title' onChange={(e) => handleChange(e)} name="title"/>
