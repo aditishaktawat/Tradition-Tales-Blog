@@ -113,7 +113,7 @@ const savePost = async() => {
             type="file"
             id="fileInput"
             style= {{ display: 'none'}}
-            onChange={(e) => handleFileChange(e)}
+            onChange={(e) => setfile(e.target.files[0])}
            />
 
          <InputTextField placeholder='Title' onChange={(e) => handleChange(e)} name="title"/>
