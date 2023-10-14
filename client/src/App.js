@@ -51,7 +51,7 @@ const [isAuthenticated, setIsAuthenticated] = useState(false);
         
         <div style={{marginTop: 64}}>
           <Routes>
-      <Route path='/login' element={<Login isUserAuthenticated={isUserAuthenticated}/>} />
+      <Route path='/login' element={<Login setIsAuthenticated={isUserAuthenticated}/>} />
 
       <Route path='/' element={<PrivateRoute isAuthenticated={isAuthenticated}/>} >
       <Route path='/' element={<Home />} />
