@@ -28,7 +28,7 @@ const PrivateRoute = ({ isAuthenticated, ...props }) => {
 
 function App() {
 
-const [isAuthenticated, isUserAuthenticated] = useState(false);
+const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const backendUrl = 'https://tradition-tales-backend.vercel.app';
   useEffect(() => {
@@ -36,7 +36,7 @@ const [isAuthenticated, isUserAuthenticated] = useState(false);
       .get(`${backendUrl}/api/auth/check-auth`, { withCredentials: true })
       .then((response) => {
         if (response.data.isAuthenticated) {
-          isUserAuthenticated(true);
+          setIsAuthenticated(true);
         }
       })
       .catch((error) => {
