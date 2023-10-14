@@ -49,7 +49,7 @@ const Post  = ({ post }) => {
     return null; 
   }
 
-  const url = post.picture ? post.picture : 'https://source.unsplash.com/random/600×400?healthy';
+  const url = post.picture ? post.picture : 'https://images.freecreatives.com/wp-content/uploads/2015/05/vintage-photography-backgrounds.jpg';
 
     return (
         <Container>
