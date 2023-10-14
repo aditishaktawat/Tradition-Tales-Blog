@@ -12,7 +12,7 @@ const app = express()
 app.use(cors(
   {
     origin: ["https://tradition-tales-blog-front.vercel.app"],
-    methods: ["POST" , "GET", "HEAD", "DELETE", "PUT", "PATCH"],
+    methods: ["POST" , "GET", "DELETE", "PUT"],
     credentials: true
   }
 ));
