@@ -1,11 +1,7 @@
 {
   "version": 2,
   "builds": [
-    { "src": "*.js", "use": "@vercel/node" ,
-    "buildOutput": {
-        "sizeLimit": 5242880,
-        "allowedFileTypes": ["image/png",  "image/jpg" , "image/jpeg", "image/gif"]
-      }
+    { "src": "*.js", "use": "@vercel/node" 
     }
   ],
   "routes": [
